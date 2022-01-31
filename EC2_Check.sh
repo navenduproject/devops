@@ -11,3 +11,4 @@ else
         echo "Project1 EC2 instance already found, hence running docker built on $PrivateIP"
         ansible-playbook playbook3.yml
 fi
+
