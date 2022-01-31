@@ -1,0 +1,25 @@
+- hosts: webservers
+  become: true
+
+  tasks:
+    - name: Stop old container
+      docker_container:
+        name: con1
+        state: stopped
+
+    - name: remove old container
+      docker_container:
+        name: con1
+        state: absent
+
+    - name: Remove old image
+      docker_image:
+        state: absent
+        name: navenduproject/project1
+
+    - name: creating new docker container
+      docker_container:
+        name: con1
+        image: navenduproject/project1
+        ports:
+          - "8080:8080"
